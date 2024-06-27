@@ -1,4 +1,4 @@
-function NavBar() {
+const NavBar = () => {
   return (
     <>
       <nav className="navbar bg-body-tertiary" data-bs-theme="dark">

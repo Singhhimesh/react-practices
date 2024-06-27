@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import { useLayoutEffect, useState } from "react";
+import ActionButton from "./ActionButton";
+import { useState } from "react";
 
-function TextForm({ heading }) {
+const TextForm = ({ heading }) => {
   const [text, setText] = useState("");
   const [extractEmails, setExtractEmails] = useState([]);
 
@@ -22,11 +23,7 @@ function TextForm({ heading }) {
   };
 
   const handleExtractEmail = (event) => {
-    let emails = text
-      .split(" ")
-      .filter((word) =>
-        /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/.test(word)
-      );
+    let emails = text.split(" ").filter(word => /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/.test(word));
 
     setExtractEmails(emails);
   };
@@ -46,38 +43,34 @@ function TextForm({ heading }) {
             rows={8}
           ></textarea>
         </div>
-        <button
-          disabled={! text}
-          onClick={handleToUpperCase}
+
+        <ActionButton
+          title="Convert to Uppercase"
+          action={handleToUpperCase}
+          disabled={ ! text }
           className="btn btn-outline-primary ml-2"
-        >
-          Convert to Uppercase
-        </button>
-        
-        <button
-          disabled={! text}
-          onClick={handleToLowerCase}
-          className="btn btn-outline-primary mx-2"
-        >
-          Convert to Lowercase
-        </button>
+        ></ActionButton>
 
-        <button
-          disabled={! text}
-
-          onClick={handleExtractEmail}
+        <ActionButton
+          title="Convert to Lowercase"
+          disabled={ ! text }
+          action={ handleToLowerCase }
           className="btn btn-outline-primary mx-2"
-        >
-          Extract Emails
-        </button>
+        ></ActionButton>
 
-        <button
-          disabled={! text}
-          onClick={handleClearText}
+        <ActionButton
+          title="Extract Emails"
+          disabled={ ! text }
+          action={ handleExtractEmail }
           className="btn btn-outline-primary mx-2"
-        >
-          Clear Text
-        </button>
+        ></ActionButton>
+
+        <ActionButton
+          title="Clear Text"
+          disabled={ ! text }
+          action={ handleClearText }
+          className="btn btn-outline-primary mx-2"
+        ></ActionButton>
       </div>
 
       {extractEmails.length ? (
