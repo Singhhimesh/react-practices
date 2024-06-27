@@ -1,14 +1,12 @@
 import NavBar from "./components/NavBar";
-import TextForm from "./components/TextForm";
-
+// import Todo from "./components/Todo";
+import Counter from "./components/Counter";
 const App = () => {
   return (
     <>
       <NavBar />
-
-      <div className="container">
-        <TextForm heading={"Enter the text to anaylze below."}></TextForm>
-      </div>
+      {/* <Todo></Todo> */}
+      <Counter></Counter>
     </>
   );
 }
