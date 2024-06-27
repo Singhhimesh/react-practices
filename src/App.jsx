@@ -1,16 +1,25 @@
+import { useState } from "react";
 import NavBar from "./components/NavBar";
-import TextForm from "./components/TextForm";
+import Play from "./components/Play";
 
 const App = () => {
+  const [showBtn, setShowBtn] = useState(false);
+
   return (
     <>
       <NavBar />
 
-      <div className="container">
-        <TextForm heading={"Enter the text to anaylze below."}></TextForm>
-      </div>
+      <button
+        className="btn btn-outline-danger"
+        onClick={() => setShowBtn((prev) => !prev)}
+      >
+        {showBtn ? "Hide" : "Show"}
+      </button>
+
+      <Play showBtn={showBtn}></Play>
+
     </>
   );
-}
+};
 
 export default App;
