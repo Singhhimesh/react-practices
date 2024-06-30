@@ -1,16 +1,11 @@
-import NavBar from "./components/NavBar";
-import TextForm from "./components/TextForm";
-
+import React from 'react'
+import Counter from './components/Counter'
 const App = () => {
   return (
-    <>
-      <NavBar />
-
-      <div className="container">
-        <TextForm heading={"Enter the text to anaylze below."}></TextForm>
-      </div>
-    </>
-  );
+    <div>
+      <Counter />
+    </div>
+  )
 }
 
-export default App;
+export default App
